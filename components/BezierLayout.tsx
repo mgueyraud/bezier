@@ -1,0 +1,18 @@
+"use client";
+import { useState, ClipboardEvent } from "react";
+import { SubmitButton } from "./SubmitButton";
+import { analyzeCubicBezier } from "@/app/actions";
+import { useFormState } from "react-dom";
+import Form from "./Form";
+import BezierAnalysis from "./BezierAnalysis";
+
+export default function BezierLayout() {
+  const [state, action] = useFormState(analyzeCubicBezier, null);
+
+  return (
+    <>
+      <Form action={action} />
+      {state ? <BezierAnalysis analysis={state} /> : null}
+    </>
+  );
+}
