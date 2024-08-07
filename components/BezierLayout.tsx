@@ -1,6 +1,4 @@
 "use client";
-import { useState, ClipboardEvent } from "react";
-import { SubmitButton } from "./SubmitButton";
 import { analyzeCubicBezier } from "@/app/actions";
 import { useFormState } from "react-dom";
 import Form from "./Form";
