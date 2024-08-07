@@ -1,5 +1,5 @@
 import InfoIcon from "@/icons/InfoIcon";
-import type { BezierAnalysis } from "@/types/BezierAnalysis";
+import type { AnalyzeCubicBezierSuccessResult } from "@/types/BezierAnalysis";
 import React from "react";
 import {
   Tooltip,
@@ -11,7 +11,7 @@ import {
 export default function BezierAnalysis({
   analysis,
 }: {
-  analysis: BezierAnalysis;
+  analysis: AnalyzeCubicBezierSuccessResult["analysis"];
 }) {
   return (
     <div className="max-w-3xl mx-auto mt-10 mb-8">

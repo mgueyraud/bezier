@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} ${GeistSans.variable} ${GeistMono.variable}`}
+        className={`${inter.className} ${GeistSans.variable} ${GeistMono.variable} px-4`}
       >
         {children}
       </body>

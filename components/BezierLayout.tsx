@@ -6,11 +6,19 @@ import BezierAnalysis from "./BezierAnalysis";
 
 export default function BezierLayout() {
   const [state, action] = useFormState(analyzeCubicBezier, null);
+  console.log(state);
 
   return (
     <>
       <Form action={action} />
-      {state ? <BezierAnalysis analysis={state} /> : null}
+      {state && !state.success ? (
+        <p className="text-red-600 mt-4 text-center" role="alert">
+          {state.message}
+        </p>
+      ) : null}
+      {state && state.success ? (
+        <BezierAnalysis analysis={state.analysis} />
+      ) : null}
     </>
   );
 }

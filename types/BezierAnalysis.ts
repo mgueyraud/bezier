@@ -1,9 +1,12 @@
-export type BezierAnalysis = {
-    name?: string;
-    title?: string;
-    description?: string;
-    examples?: string;
-    suggestions?: Array<{
+
+export type AnalyzeCubicBezierSuccessResult = {
+  success: true;
+  analysis: {
+    name: string;
+    title: string;
+    description: string;
+    examples: string;
+    suggestions: Array<{
       bezierFunction: string;
       name: string;
       description: string;
@@ -11,9 +14,17 @@ export type BezierAnalysis = {
       why: string;
     }>;
     points: {
-        x1: string,
-        y1: string,
-        x2: string,
-        y2: string
-    }
+      x1: number;
+      y1: number;
+      x2: number;
+      y2: number;
+    };
   };
+};
+
+export type AnalyzeCubicBezierErrorResult = {
+  success: false;
+  message: string;
+};
+
+export type AnalyzeCubicBezierResult = AnalyzeCubicBezierSuccessResult | AnalyzeCubicBezierErrorResult;
