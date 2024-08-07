@@ -4,3 +4,7 @@ An app to generate valuable information about your cubic bezier function, you ca
 
 <img width="864" alt="Screenshot 2024-08-06 at 22 45 50" src="https://github.com/user-attachments/assets/4ea26690-0e94-4a74-a8f6-15203385e033">
 
+# Demo
+
+https://github.com/user-attachments/assets/c06f5613-18b4-48d9-b48a-13e316d53cce
+
