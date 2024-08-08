@@ -6,5 +6,6 @@ An app to generate valuable information about your cubic bezier function, you ca
 
 # Demo
 
-https://github.com/user-attachments/assets/c06f5613-18b4-48d9-b48a-13e316d53cce
+https://github.com/user-attachments/assets/bdf92361-a7dc-400a-805d-5ddda94ad788
+
 
