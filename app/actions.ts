@@ -1,6 +1,7 @@
 'use server';
 
 import cubicBezierSchema from "@/schemas/cubicBezier";
+import { codeToHtml } from "shiki";
 import { AnalyzeCubicBezierResult, AnalyzeCubicBezierSuccessResult } from "@/types/BezierAnalysis";
 import { analyze } from "@/utils/ai";
 
@@ -27,8 +28,15 @@ export async function analyzeCubicBezier(prevState: any, formData: FormData): Pr
         }
         
         const response = await analyze(`cubic-bezier(${x1},${y1},${x2}, ${y2})`);
+
+        if(!response) throw Error("The AI response had an error");
+
+        const htmlCssCode = await codeToHtml(response.codeExamples.css, {
+            lang: "css",
+            theme: "catppuccin-mocha",
+        });
         
-        return {analysis: {...response, points: {x1, y1, x2, y2}}, success: true} as AnalyzeCubicBezierSuccessResult;
+        return {analysis: {...response, htmlCssCode, points: {x1, y1, x2, y2}}, success: true} as AnalyzeCubicBezierSuccessResult;
 
     }catch(e){
         return {

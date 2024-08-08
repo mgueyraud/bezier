@@ -13,6 +13,7 @@ export type AnalyzeCubicBezierSuccessResult = {
       title: string;
       why: string;
     }>;
+    htmlCssCode: string;
     codeExamples: {
       css: string,
     },

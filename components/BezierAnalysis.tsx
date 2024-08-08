@@ -1,30 +1,18 @@
 import InfoIcon from "@/icons/InfoIcon";
 import type { AnalyzeCubicBezierSuccessResult } from "@/types/BezierAnalysis";
-import React, { useEffect, useState } from "react";
+
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { codeToHtml } from "shiki";
 
 export default function BezierAnalysis({
   analysis,
 }: {
   analysis: AnalyzeCubicBezierSuccessResult["analysis"];
 }) {
-  const [cssCode, setCssCode] = useState("");
-
-  useEffect(() => {
-    codeToHtml(analysis.codeExamples.css, {
-      lang: "css",
-      theme: "catppuccin-mocha",
-    }).then((code) => {
-      setCssCode(code);
-    });
-  }, [analysis.codeExamples.css]);
-
   return (
     <div className="max-w-3xl mx-auto mt-10 mb-8">
       <h2 className="font-sans text-2xl font-bold">{analysis.title}</h2>
@@ -41,7 +29,7 @@ export default function BezierAnalysis({
       <p className="mt-2">{analysis.examples}</p>
       <h3 className="mt-6 text-lg font-medium">Code example</h3>
       <div
-        dangerouslySetInnerHTML={{ __html: cssCode }}
+        dangerouslySetInnerHTML={{ __html: analysis.htmlCssCode }}
         className="mt-3 rounded-md"
       />
       <h3 className="mt-6 text-lg font-medium">Alternatives</h3>
