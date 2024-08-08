@@ -1,18 +1,30 @@
 import InfoIcon from "@/icons/InfoIcon";
 import type { AnalyzeCubicBezierSuccessResult } from "@/types/BezierAnalysis";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { codeToHtml } from "shiki";
 
 export default function BezierAnalysis({
   analysis,
 }: {
   analysis: AnalyzeCubicBezierSuccessResult["analysis"];
 }) {
+  const [cssCode, setCssCode] = useState("");
+
+  useEffect(() => {
+    codeToHtml(analysis.codeExamples.css, {
+      lang: "css",
+      theme: "catppuccin-mocha",
+    }).then((code) => {
+      setCssCode(code);
+    });
+  }, [analysis.codeExamples.css]);
+
   return (
     <div className="max-w-3xl mx-auto mt-10 mb-8">
       <h2 className="font-sans text-2xl font-bold">{analysis.title}</h2>
@@ -27,7 +39,12 @@ export default function BezierAnalysis({
       </a>
       <h3 className="mt-6 text-lg font-medium">Use</h3>
       <p className="mt-2">{analysis.examples}</p>
-      <h3 className="mt-6 text-lg font-medium">Suggestions</h3>
+      <h3 className="mt-6 text-lg font-medium">Code example</h3>
+      <div
+        dangerouslySetInnerHTML={{ __html: cssCode }}
+        className="mt-3 rounded-md"
+      />
+      <h3 className="mt-6 text-lg font-medium">Alternatives</h3>
       <div className="grid grid-cols-1 gap-3 mt-5 md:grid-cols-3">
         {analysis.suggestions?.map((bezierFunc) => (
           <div key={bezierFunc.bezierFunction}>

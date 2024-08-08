@@ -14,6 +14,10 @@ const parser = StructuredOutputParser.fromZodSchema(
         examples: z.string().describe(`Describe in which UI elements this bezier function will be great to use
             analyzing the bezier function and the needs of the user (Example if it's fast it can
             be for a modal), come up with 3 examples`),
+        codeExamples: z.object({
+            css: z.string().describe(`Example of the cubic bezier function in CSS declared with a variable, 
+                declare it at the :root level and make the proper formatting for CSS classes (line breaks, etc)`),
+        }),
         suggestions: z.array(z.object({
             bezierFunction: z.string().describe('The cubic bezier function in this format: cubic-bezier(...)'),
             name: z.string().describe(`
